@@ -5,7 +5,7 @@ import java.io.*;
 
 public class Day5Code1 {
     public static void main(String[] args) {
-        System.out.println("Hell");
+        System.out.println("Hello!");
         Scanner scanner = null;
         try {
             File file = new File("input.txt");
@@ -24,7 +24,6 @@ public class Day5Code1 {
             one.add("M");
             one.add("H");
             one.add("R");
-            System.out.println(one);
             LinkedList<String> two = new LinkedList<>();
             two.add("P");
             two.add("C");
@@ -85,75 +84,40 @@ public class Day5Code1 {
             nine.add("M");
             nine.add("L");
 
-            LinkedList<String> moving = new LinkedList<>();
+            LinkedList<LinkedList<String>> wholeList = new LinkedList<>();
+            wholeList.add(one);
+            wholeList.add(two);
+            wholeList.add(three);
+            wholeList.add(four);
+            wholeList.add(five);
+            wholeList.add(six);
+            wholeList.add(seven);
+            wholeList.add(eight);
+            wholeList.add(nine);
 
             String moved = "";
 
-            String[] parts = array.get(0).split(" ");
-
-            int count = 0;
             for (int ind = 10; ind < array.size(); ind++) {
                 String[] commands = array.get(ind).split(" ");
-
-                int from = Integer.parseInt(commands[1]);
-                for (int x = 0; x < from; x++) {
-                    if (commands[3].equals("1")) {
-                        moved = moved + one.getLast();
-                        one.removeLast();
-                    } else if (commands[3].equals("2")) {
-                        moved = moved + two.getLast();
-                        two.removeLast();
-                    } else if (commands[3].equals("3")) {
-                        moved = moved + three.getLast();
-                        three.removeLast();
-                    } else if (commands[3].equals("4")) {
-                        moved = moved + four.getLast();
-                        four.removeLast();
-                    } else if (commands[3].equals("5")) {
-                        moved = moved + five.getLast();
-                        five.removeLast();
-                    } else if (commands[3].equals("6")) {
-                        moved = moved + six.getLast();
-                        six.removeLast();
-                    } else if (commands[3].equals("7")) {
-                        moved = moved + seven.getLast();
-                        seven.removeLast();
-                    } else if (commands[3].equals("8")) {
-                        moved = moved + eight.getLast();
-                        eight.removeLast();
-
-                    } else {
-                        moved = moved + nine.getLast();
-                        nine.removeLast();
-                    }
+                int amount = Integer.parseInt(commands[1]);
+                int from = Integer.parseInt(commands[3])-1;
+                
+                for (int x = 0; x < amount; x++) {
+                    moved = moved + wholeList.get(from).getLast();
+                    wholeList.get(from).removeLast();
                 }
 
                 String[] moves = moved.split("");
-              
+
                 for (int y = moves.length-1; y >= 0 ; y--) {
 
-                    if (commands[5].equals("1")) {
-                        one.addLast(moves[y]);
-                    } else if (commands[5].equals("2")) {
-                        two.addLast(moves[y]);
-                    } else if (commands[5].equals("3")) {
-                        three.addLast(moves[y]);
-                    } else if (commands[5].equals("4")) {
-                        four.addLast(moves[y]);
-                    } else if (commands[5].equals("5")) {
-                        five.addLast(moves[y]);
-                    } else if (commands[5].equals("6")) {
-                        six.addLast(moves[y]);
-                    } else if (commands[5].equals("7")) {
-                        seven.addLast(moves[y]);
-                    } else if (commands[5].equals("8")) {
-                        eight.addLast(moves[y]);
-                    } else {
-                        nine.addLast(moves[y]);
-                    }
+                    int to = Integer.parseInt(commands[5])-1;
+                    wholeList.get(to).addLast(moves[y]);
                 }
+
                 moved = "";
             }
+
             System.out.print(one.getLast()+two.getLast()+three.getLast()+four.getLast()+five.getLast()+six.getLast()+seven.getLast()+eight.getLast()+nine.getLast());
 
             scanner.close();

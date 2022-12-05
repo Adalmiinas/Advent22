@@ -62,7 +62,6 @@ public class Day2Code1 {
             if (scanner != null) {
                 scanner.close();
             }
-
         }
     }
 }
