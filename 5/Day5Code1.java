@@ -18,83 +18,23 @@ public class Day5Code1 {
                 array.add(line);
             }
 
-            LinkedList<String> one = new LinkedList<>();
-            one.add("Z");
-            one.add("P");
-            one.add("M");
-            one.add("H");
-            one.add("R");
-            System.out.println(one);
-            LinkedList<String> two = new LinkedList<>();
-            two.add("P");
-            two.add("C");
-            two.add("J");
-            two.add("B");
-            LinkedList<String> three = new LinkedList<>();
-            three.add("S");
-            three.add("N");
-            three.add("H");
-            three.add("G");
-            three.add("L");
-            three.add("C");
-            three.add("D");
-            LinkedList<String> four = new LinkedList<>();
-            four.add("F");
-            four.add("T");
-            four.add("M");
-            four.add("D");
-            four.add("Q");
-            four.add("S");
-            four.add("R");
-            four.add("L");
-            LinkedList<String> five = new LinkedList<>();
-            five.add("F");
-            five.add("S");
-            five.add("P");
-            five.add("Q");
-            five.add("B");
-            five.add("T");
-            five.add("Z");
-            five.add("M");
-            LinkedList<String> six = new LinkedList<>();
-            six.add("T");
-            six.add("F");
-            six.add("S");
-            six.add("Z");
-            six.add("B");
-            six.add("G");
-            LinkedList<String> seven = new LinkedList<>();
-            seven.add("N");
-            seven.add("R");
-            seven.add("V");
-            LinkedList<String> eight = new LinkedList<>();
-            eight.add("P");
-            eight.add("Q");
-            eight.add("L");
-            eight.add("T");
-            eight.add("D");
-            eight.add("V");
-            eight.add("C");
-            eight.add("M");
-            LinkedList<String> nine = new LinkedList<>();
-            nine.add("W");
-            nine.add("Q");
-            nine.add("N");
-            nine.add("J");
-            nine.add("F");
-            nine.add("M");
-            nine.add("L");
-
             LinkedList<LinkedList<String>> wholeList = new LinkedList<>();
-            wholeList.add(one);
-            wholeList.add(two);
-            wholeList.add(three);
-            wholeList.add(four);
-            wholeList.add(five);
-            wholeList.add(six);
-            wholeList.add(seven);
-            wholeList.add(eight);
-            wholeList.add(nine);
+            int length = array.get(0).length()/4+1;
+
+            for (int y = 0; y < length; y++) {
+                wholeList.add(new LinkedList<String>());
+            }
+
+            for (int ind = 0; ind < 8; ind++) {
+                char[] line = array.get(ind).toCharArray();
+                for (int x = 0; x < line.length; x++) {
+                    String c = Character.toString(line[x]);
+                    if(Character.isLetter(line[x])){
+                        int position = x/4;
+                        wholeList.get(position).addFirst(c);                
+                    }
+                }
+            }
 
             String moved = "";
 
@@ -118,7 +58,8 @@ public class Day5Code1 {
                 moved = "";
             }
 
-            System.out.print(one.getLast()+two.getLast()+three.getLast()+four.getLast()+five.getLast()+six.getLast()+seven.getLast()+eight.getLast()+nine.getLast());
+            System.out.print(wholeList.get(0).getLast() + wholeList.get(1).getLast() + wholeList.get(2).getLast() + wholeList.get(3).getLast() + wholeList.get(4).getLast()
+                    + wholeList.get(5).getLast() + wholeList.get(6).getLast() + wholeList.get(7).getLast() + wholeList.get(8).getLast());
 
             scanner.close();
 
