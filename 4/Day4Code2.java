@@ -2,7 +2,7 @@ import java.util.Scanner;
 import java.util.ArrayList;
 import java.io.*;
 
-public class Day3Code1 {
+public class Day4Code2 {
     public static void main(String[] args) {
         System.out.println("Hello!");
         Scanner scanner = null;
