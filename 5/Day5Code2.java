@@ -8,7 +8,7 @@ public class Day5Code2 {
         System.out.println("Hello!");
         Scanner scanner = null;
         try {
-            File file = new File("input.txt");
+            File file = new File("emilinput.txt");
             scanner = new Scanner(file);
 
             ArrayList<String> array = new ArrayList<>();

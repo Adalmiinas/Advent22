@@ -19,7 +19,7 @@ public class Day5Code1 {
             }
 
             LinkedList<LinkedList<String>> wholeList = new LinkedList<>();
-            int length = array.get(0).length()/4+1;
+            int length = array.get(0).length() / 4 + 1;
 
             for (int y = 0; y < length; y++) {
                 wholeList.add(new LinkedList<String>());
@@ -29,37 +29,29 @@ public class Day5Code1 {
                 char[] line = array.get(ind).toCharArray();
                 for (int x = 0; x < line.length; x++) {
                     String c = Character.toString(line[x]);
-                    if(Character.isLetter(line[x])){
-                        int position = x/4;
-                        wholeList.get(position).addFirst(c);                
+                    if (Character.isLetter(line[x])) {
+                        int position = x / 4;
+                        wholeList.get(position).addFirst(c);
                     }
                 }
             }
 
-            String moved = "";
-
             for (int ind = 10; ind < array.size(); ind++) {
                 String[] commands = array.get(ind).split(" ");
                 int amount = Integer.parseInt(commands[1]);
-                int from = Integer.parseInt(commands[3])-1;
+                int from = Integer.parseInt(commands[3]) - 1;
+                int to = Integer.parseInt(commands[5]) - 1;
 
                 for (int x = 0; x < amount; x++) {
-                    moved = moved + wholeList.get(from).getLast();
+                    String move = wholeList.get(from).getLast();
+                    wholeList.get(to).addLast(move);
                     wholeList.get(from).removeLast();
                 }
-
-                String[] moves = moved.split("");
-
-                for (int y = 0; y < moves.length; y++) {
-                    int to = Integer.parseInt(commands[5])-1;
-                    wholeList.get(to).addLast(moves[y]);
-                }
-
-                moved = "";
             }
 
-            System.out.print(wholeList.get(0).getLast() + wholeList.get(1).getLast() + wholeList.get(2).getLast() + wholeList.get(3).getLast() + wholeList.get(4).getLast()
-                    + wholeList.get(5).getLast() + wholeList.get(6).getLast() + wholeList.get(7).getLast() + wholeList.get(8).getLast());
+            System.out.print(wholeList.get(0).getLast() + wholeList.get(1).getLast() + wholeList.get(2).getLast()
+                    + wholeList.get(3).getLast() + wholeList.get(4).getLast() + wholeList.get(5).getLast()
+                    + wholeList.get(6).getLast() + wholeList.get(7).getLast() + wholeList.get(8).getLast());
 
             scanner.close();
 
