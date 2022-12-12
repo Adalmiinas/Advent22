@@ -1,7 +1,7 @@
 import java.util.*;
 import java.io.*;
 
-public class Day9Code1 {
+public class Day10Code1 {
     public static void main(String[] args) {
         System.out.println("Hello!");
         Scanner scanner = null;
